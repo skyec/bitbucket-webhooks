@@ -2,8 +2,6 @@ package bitbucket
 
 import "time"
 
-// http://mholt.github.io/json-to-go/ used to autogenerate most structs then modified by hand to extract duplication
-
 // RepoPushEvent https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html#EventPayloads-Push
 type RepoPushEvent struct {
 	Actor      Actor      `json:"actor"`
@@ -42,7 +40,7 @@ type Links struct {
 	} `json:"commit"`
 }
 
-// OldOrNew is used in the PushEvent type
+// OldOrNew is used in the RepoPushEvent type
 type OldOrNew struct {
 	Repository struct {
 		FullName string `json:"full_name"`

@@ -23,7 +23,7 @@ func TestEvents(t *testing.T) {
 
 	type fixture struct {
 		event       string
-		handler     WebHookHandler
+		handler     WebhookHandler
 		payloadFile string
 	}
 	for _, fix := range []fixture{
@@ -106,4 +106,19 @@ func TestEvents(t *testing.T) {
 		require.True(t, called, "Event is called: "+fix.event)
 	}
 
+}
+
+func Example() {
+	wh := NewWebhook()
+	wh.Handle("repo:push", func(headers Headers, event interface{}) error {
+		log.Println("Event key:", headers["X-Event-Key"])
+		log.Println("Event UUID:", headers["X-Hook-UUID"])
+
+		push := event.(*RepoPushEvent)
+		log.Println("Repo:", push.Repository.FullName)
+		log.Println("User:", push.Actor.Username)
+		return nil
+	})
+
+	http.Handle("/webhooks", wh)
 }
