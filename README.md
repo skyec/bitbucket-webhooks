@@ -1,8 +1,8 @@
-# BitBucket Webhooks
+# Bitbucket Webhooks
 
 ## Summary
 
-An implementation of all the BitBucket webhook API types in Go (golang) and
+An implementation of all the Bitbucket webhook API types in Go (golang) and
 an HTTPHandler that can receive all the webhook events and call callbacks. This
 is not a stable API. Submit issues if you have any problems or have suggestions.
 
@@ -24,8 +24,8 @@ wh.Handle("repo:push", func(headers bitbucket.Headers, event interface{}) error 
 
 http.Handle("/webhooks", wh)
 ```
-Start your server and enter "http(s)://yourserver/webhooks" in BitBucket
-webhook interface. See the [BitBucket API webhooks docks](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) for more.
+Start your server and enter "http(s)://yourserver/webhooks" in Bitbucket
+webhook interface. See the [Bitbucket API webhooks docks](https://confluence.atlassian.com/bitbucket/manage-webhooks-735643732.html) for more.
 
 
 
